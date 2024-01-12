@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rain Animation</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    
+<canvas id="rainCanvas"></canvas>
+
+<script>
+    // Get the canvas and context
+    var canvas = document.getElementById('rainCanvas');
+    var ctx = canvas.getContext('2d');
+
+    // Set canvas dimensions to cover the whole window
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // Array to store raindrop objects
+    var raindrops = [];
+
+    // Function to create a raindrop
+    function createRaindrop() {
+        return {
+            x: Math.random() * canvas.width,
+            y: 0,
+            length: Math.random() * 2 + 5, // Random length between 5 and 25
+            speed: Math.random() * 15 + 2 // Random speed between 2 and 7
+        };
+    }
+
+    // Function to draw raindrops
+    function drawRaindrops() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (var i = 0; i < raindrops.length; i++) {
+            var drop = raindrops[i];
+
+            ctx.beginPath();
+            ctx.moveTo(drop.x, drop.y);
+            ctx.lineTo(drop.x, drop.y + drop.length);
+            ctx.strokeStyle = '#00F'; // Blue color
+            ctx.lineWidth = 2;
+            ctx.lineCap = 'round';
+            ctx.stroke();
+
+            drop.y += drop.speed;
+
+            // Remove raindrop if it goes beyond the canvas
+            if (drop.y > canvas.height) {
+                raindrops.splice(i, 1);
+                i--;
+            }
+        }
+    }
+
+    // Function to update the rain animation
+    function updateRain() {
+        raindrops.push(createRaindrop());
+
+        // Limit the number of raindrops on the screen
+        if (raindrops.length > 100) {
+            raindrops.shift();
+        }
+
+        drawRaindrops();
+    }
+
+    // Set interval to update the rain animation
+    setInterval(updateRain, 50);
+
+    // Resize canvas when the window is resized
+    window.addEventListener('resize', function() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+</script>
+
+</body>
+</html>

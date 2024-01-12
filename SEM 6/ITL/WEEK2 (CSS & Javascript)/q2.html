@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greetings and Clock</title>
+    <style>
+        body {
+        	background-color: moccasin;
+    		opacity: 80%;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 50px;
+            color: brown;
+        }
+
+        #clock {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        #greeting {
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="clock"></div>
+<div id="greeting"></div>
+
+<script>
+    function updateClock() {
+        var now = new Date();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds();
+
+        // Add leading zeros if needed
+        hours = (hours < 10) ? "0" + hours : hours;
+        minutes = (minutes < 10) ? "0" + minutes : minutes;
+        seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+        var timeString = hours + ":" + minutes + ":" + seconds;
+
+        document.getElementById('clock').textContent = timeString;
+
+        // Wish the user based on the time
+        var greeting = "Good ";
+        if (hours < 12) {
+            greeting += "Morning!";
+        } else if (hours < 16) {
+            greeting += "Afternoon!";
+        } else if(hours < 20){
+            greeting += "Evening!";
+        }
+        else{
+        	greeting+="Night";
+        }
+
+        document.getElementById('greeting').textContent = greeting;
+    }
+
+    // Update the clock every second
+    setInterval(updateClock, 1000);
+
+    // Call the function on load
+    updateClock();
+</script>
+
+</body>
+</html>

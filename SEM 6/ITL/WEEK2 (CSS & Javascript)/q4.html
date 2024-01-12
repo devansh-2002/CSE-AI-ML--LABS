@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouncing Ball</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="bouncingBallCanvas"></canvas>
+
+<script>
+    // Get the canvas and context
+    var canvas = document.getElementById('bouncingBallCanvas');
+    var ctx = canvas.getContext('2d');
+
+    // Set canvas dimensions to cover the whole window
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // Ball properties
+    var ball = {
+        x: canvas.width / 2,
+        y: canvas.height / 2,
+        radius: 20,
+        dx: 15, // Horizontal speed
+        dy: 2, // Vertical speed
+    };
+
+    // Function to draw the ball
+    function drawBall() {
+        ctx.beginPath();
+        ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+        ctx.fillStyle = '#FF5733'; // Orange color
+        ctx.fill();
+        ctx.closePath();
+    }
+
+    // Function to update the ball's position
+    function updateBall() {
+        ball.x += ball.dx;
+        ball.y += ball.dy;
+
+        // Bounce off the walls
+        if (ball.x - ball.radius < 0 || ball.x + ball.radius > canvas.width) {
+            ball.dx = -ball.dx;
+        }
+
+        if (ball.y - ball.radius < 0 || ball.y + ball.radius > canvas.height) {
+            ball.dy = -ball.dy;
+        }
+    }
+
+    // Function to clear the canvas and draw the ball
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawBall();
+        updateBall();
+        requestAnimationFrame(draw);
+    }
+
+    // Call the draw function to start the animation
+    draw();
+
+    // Resize canvas when the window is resized
+    window.addEventListener('resize', function() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+</script>
+
+</body>
+</html>

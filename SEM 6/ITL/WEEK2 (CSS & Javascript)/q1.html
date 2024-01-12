@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Element Position</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        #targetElement {
+            width: 200px;
+            height: 200px;
+            background-color: lightblue;
+            position: relative;
+        }
+
+    </style>
+    
+</head>
+<body>
+
+<div id="targetElement">Target Element</div>
+
+<script>
+    function getElementPosition() {
+        var element = document.getElementById('targetElement');
+        var position = element.getBoundingClientRect();
+
+        console.log('Element Position:');
+        console.log('Top: ' + position.top);
+        console.log('Left: ' + position.left);
+        console.log('Bottom: ' + position.bottom);
+        console.log('Right: ' + position.right);
+
+        alert('Element Position:\nTop: ' + position.top + '\nLeft: ' + position.left +
+            '\nBottom: ' + position.bottom + '\nRight: ' + position.right);
+    }
+
+    // Call the function on load or as needed
+    getElementPosition();
+</script>
+
+</body>
+</html>
+

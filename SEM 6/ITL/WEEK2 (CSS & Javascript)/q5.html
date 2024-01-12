@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Picker</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        #colorPicker {
+            width: 200px;
+            height: 200px;
+            margin: 20px;
+        }
+
+        #selectedColor {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<input type="color" id="colorPicker" onchange="updateColor()">
+<div id="selectedColor">Selected Color: #000000</div>
+
+<script>
+    function updateColor() {
+        var colorPicker = document.getElementById('colorPicker');
+        var selectedColor = document.getElementById('selectedColor');
+
+        var color = colorPicker.value;
+        selectedColor.textContent = 'Selected Color: ' + color;
+
+        // You can use the selected color for further processing or styling
+        // For example, document.body.style.backgroundColor = color;
+    }
+</script>
+
+</body>
+</html>
