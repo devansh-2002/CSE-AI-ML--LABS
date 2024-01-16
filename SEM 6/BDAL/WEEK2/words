@@ -1,0 +1,3 @@
+this is a test document.
+DataFrame is an API and abstraction built on top of RDDs. It represents a distributed collection of data organized into named columns, similar to a table in a relational database. DataFrames are part of the Spark SQL API, which provides a programming interface for working with structured and semi-structured data using SQL-like queries.
+Spark SQL is a module or component in Spark that provides a programming interface and optimizations for working with structured data using SQL queries. It includes support for DataFrames, Datasets, and executing SQL queries directly on distributed data.
