@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Lab Work
+        </title>
+        <script src="jquery-3.7.1.min.js"></script>
+        <script>
+            $(document).ready(()=>{
+                $("#anim").click(()=>{
+                    $("#mydiv").animate({
+                        translate:'-250px'
+                    });
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div id="mydiv" style="display: flex;float: right;">
+            <div>
+                <table>
+                    <tr style="background-color:teal;">
+                        <td>Name</td>
+                        <td>Age</td>
+                        <td>marks</td>
+                    </tr>
+                    <tr style="background-color:aqua">
+                        <td>dev</td>
+                        <td>20</td>
+                        <td>100</td>
+                    </tr>
+                    <tr style="background-color:burlywood;">
+                        <td>avi</td>
+                        <td>20</td>
+                        <td>150</td>
+                    </tr>
+                    <tr style="background-color:mintcream;">
+                        <td>ishan</td>
+                        <td>20</td>
+                        <td>100</td>
+                    </tr>
+                </table>
+                <img src="https://bestliness.com/wp-content/uploads/2023/07/tom-and-jerry-images-98.png" height="300px">
+            </div>
+        </div>
+        <div>
+            <input type="button" id="anim" value="Move">
+        </div>
+    </body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basic Calculator</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #calculator {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    input {
+      width: 50px;
+      padding: 5px;
+      text-align: right;
+      margin-bottom: 10px;
+    }
+
+    button {
+      width: 50px;
+      height: 50px;
+      margin: 5px;
+      cursor: pointer;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+  <div id="calculator">
+    <input type="text" id="display" disabled>
+    <br>
+    <button class="number">7</button>
+    <button class="number">8</button>
+    <button class="number">9</button>
+    <button class="operator">/</button>
+    <br>
+    <button class="number">4</button>
+    <button class="number">5</button>
+    <button class="number">6</button>
+    <button class="operator">*</button>
+    <br>
+    <button class="number">1</button>
+    <button class="number">2</button>
+    <button class="number">3</button>
+    <button class="operator">-</button>
+    <br>
+    <button class="number">0</button>
+    <button class="operator">.</button>
+    <button class="equals" id="equals">=</button>
+    <button class="operator">+</button>
+    <br>
+    <button class="clear" id="clear">C</button>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      let currentInput = '';
+      let operator = '';
+      let firstNumber = '';
+
+      $('.number').on('click', function() {
+        currentInput += $(this).text();
+        $('#display').val(currentInput);
+      });
+
+      $('.operator').on('click', function() {
+        if (firstNumber === '') {
+          firstNumber = currentInput;
+          currentInput = '';
+        } else {
+          calculate();
+        }
+        operator = $(this).text();
+      });
+
+      $('.equals').on('click', function() {
+        calculate();
+        operator = '';
+      });
+
+      $('#clear').on('click', function() {
+        currentInput = '';
+        operator = '';
+        firstNumber = '';
+        $('#display').val('');
+      });
+
+      function calculate() {
+        if (currentInput !== '') {
+          switch (operator) {
+            case '+':
+              currentInput = String(parseFloat(firstNumber) + parseFloat(currentInput));
+              break;
+            case '-':
+              currentInput = String(parseFloat(firstNumber) - parseFloat(currentInput));
+              break;
+            case '*':
+              currentInput = String(parseFloat(firstNumber) * parseFloat(currentInput));
+              break;
+            case '/':
+              if (parseFloat(currentInput) !== 0) {
+                currentInput = String(parseFloat(firstNumber) / parseFloat(currentInput));
+              } else {
+                currentInput = 'Error';
+              }
+              break;
+          }
+          $('#display').val(currentInput);
+          firstNumber = currentInput;
+          currentInput = '';
+        }
+      }
+    });
+  </script>
+</body>
+</html>

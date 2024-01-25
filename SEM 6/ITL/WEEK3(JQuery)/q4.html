@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bill Generator</title>
+  <script>
+    function produceBill() {
+      // Get selected values from dropdown, checkbox, and textbox
+      var selectedBrand = document.getElementById('brand').value;
+      var selectedItems = [];
+      var checkboxes = document.getElementsByName('items');
+      for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+          selectedItems.push(checkboxes[i].value);
+        }
+      }
+      var quantity = parseInt(document.getElementById('quantity').value) || 0;
+
+      // Calculate total amount
+      var pricePerItem = 50; // Assuming a fixed price per item
+      var totalAmount = quantity * pricePerItem;
+
+      // Display an alert with the total amount
+      alert('Bill Details:\n\nBrand: ' + selectedBrand +
+            '\nItems: ' + selectedItems.join(', ') +
+            '\nQuantity: ' + quantity +
+            '\nTotal Amount: $' + totalAmount);
+    }
+  </script>
+</head>
+<body>
+
+  <h1>Bill Generator</h1>
+
+  <label for="brand">Select Brand:</label>
+  <select id="brand">
+    <option value="HP">HP</option>
+    <option value="Nokia">Nokia</option>
+    <option value="Samsung">Samsung</option>
+    <option value="Motorola">Motorola</option>
+    <option value="Apple">Apple</option>
+  </select>
+
+  <br>
+
+  <label>Choose Items:</label>
+  <input type="checkbox" name="items" value="Mobile"> Mobile
+  <input type="checkbox" name="items" value="Laptop"> Laptop
+
+  <br>
+
+  <label for="quantity">Enter Quantity:</label>
+  <input type="text" id="quantity">
+
+  <br>
+
+  <button onclick="produceBill()">Produce Bill</button>
+
+</body>
+</html>
