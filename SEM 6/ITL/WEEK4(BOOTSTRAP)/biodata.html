@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Student Bio-Data Form</title>
+</head>
+<body>
+
+<div class="container mt-5">
+  <h2 class="mb-4">Student Bio-Data Form</h2>
+
+  <form>
+    <div class="form-group">
+      <label for="studentName">Student Name:</label>
+      <input type="text" class="form-control" id="studentName" placeholder="Enter name">
+    </div>
+
+    <div class="form-group">
+      <label for="dob">Date of Birth:</label>
+      <input type="date" class="form-control" id="dob">
+    </div>
+
+    <div class="form-group">
+      <label>Gender:</label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+        <label class="form-check-label" for="male">Male</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+        <label class="form-check-label" for="female">Female</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="address">Address:</label>
+      <textarea class="form-control" id="address" rows="3" placeholder="Enter address"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="courses">Select Courses:</label>
+      <select multiple class="form-control" id="courses">
+        <option>Mathematics</option>
+        <option>Physics</option>
+        <option>Chemistry</option>
+        <option>Biology</option>
+      </select>
+    </div>
+
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="agree">
+      <label class="form-check-label" for="agree">I agree to the terms and conditions</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+  </form>
+
+  <table class="table mt-4">
+    <thead>
+      <tr>
+        <th scope="col">Student Name</th>
+        <th scope="col">Date of Birth</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Address</th>
+        <th scope="col">Courses</th>
+        <th scope="col">Agreement</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Table rows will be populated with submitted data -->
+    </tbody>
+  </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
