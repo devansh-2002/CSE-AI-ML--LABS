@@ -1,0 +1,8 @@
+write and implement the following problem in pyspark.
+the movies.csv file contains the following field :- Moviesid,Title,Genre
+the rating .cas file contains :- Userid, Moviesid, Rating, Timestamp
+A) Apply ALS algorithm for the above dataset. Display userid with title and genre
+B) Find RMSE
+C) Genres are seprated by pipe symbol Display every unique genre along with count of their occurance.
+D) Display total rating of each movie and total rating of each genre
+E) list out top 10 best performing movies also list 5 worst performing movies. Find out the average rating of all the movies and average rating of each user.
